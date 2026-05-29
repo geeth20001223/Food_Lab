@@ -11,7 +11,9 @@ export default function ForgotPassword() {
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState<"success" | "error" | "info">("info");
+  const [messageType, setMessageType] = useState<"success" | "error" | "info">(
+    "info",
+  );
   const [loading, setLoading] = useState(false);
   const [otpSent, setOtpSent] = useState(false);
   const [resetSuccess, setResetSuccess] = useState(false);
@@ -509,7 +511,6 @@ export default function ForgotPassword() {
       `}</style>
 
       <div className="fp-root">
-
         {/* ── Branding (matches login page top) ── */}
         <div className="fp-brand">
           <div className="fp-brand-icon">🧬</div>
@@ -519,32 +520,51 @@ export default function ForgotPassword() {
 
         {/* ── Card ── */}
         <div className="fp-card">
-
           <div className="fp-card-title">
-            {resetSuccess ? "Password Reset Complete" : otpSent ? "Verify & Set New Password" : "Reset your password"}
+            {resetSuccess
+              ? "Password Reset Complete"
+              : otpSent
+                ? "Verify & Set New Password"
+                : "Reset your password"}
           </div>
 
           {/* Step indicators */}
           <div className="fp-steps">
             <div className="fp-step-item">
-              <div className={`fp-step-circle ${step > 1 ? "done" : step === 1 ? "active" : "pending"}`}>
+              <div
+                className={`fp-step-circle ${step > 1 ? "done" : step === 1 ? "active" : "pending"}`}
+              >
                 {step > 1 ? "✓" : "1"}
               </div>
-              <span className={`fp-step-label ${step > 1 ? "done" : step === 1 ? "active" : ""}`}>Email</span>
+              <span
+                className={`fp-step-label ${step > 1 ? "done" : step === 1 ? "active" : ""}`}
+              >
+                Email
+              </span>
             </div>
             <div className={`fp-step-connector ${step > 1 ? "done" : ""}`} />
             <div className="fp-step-item">
-              <div className={`fp-step-circle ${step > 2 ? "done" : step === 2 ? "active" : "pending"}`}>
+              <div
+                className={`fp-step-circle ${step > 2 ? "done" : step === 2 ? "active" : "pending"}`}
+              >
                 {step > 2 ? "✓" : "2"}
               </div>
-              <span className={`fp-step-label ${step > 2 ? "done" : step === 2 ? "active" : ""}`}>Verify OTP</span>
+              <span
+                className={`fp-step-label ${step > 2 ? "done" : step === 2 ? "active" : ""}`}
+              >
+                Verify OTP
+              </span>
             </div>
             <div className={`fp-step-connector ${step > 2 ? "done" : ""}`} />
             <div className="fp-step-item">
-              <div className={`fp-step-circle ${step === 3 ? "done" : "pending"}`}>
+              <div
+                className={`fp-step-circle ${step === 3 ? "done" : "pending"}`}
+              >
                 {step === 3 ? "✓" : "3"}
               </div>
-              <span className={`fp-step-label ${step === 3 ? "done" : ""}`}>Done</span>
+              <span className={`fp-step-label ${step === 3 ? "done" : ""}`}>
+                Done
+              </span>
             </div>
           </div>
 
@@ -554,20 +574,26 @@ export default function ForgotPassword() {
               <span className="fp-success-icon">🎉</span>
               <div className="fp-success-title">Password Reset!</div>
               <div className="fp-success-sub">
-                Your password has been changed successfully.<br />
+                Your password has been changed successfully.
+                <br />
                 You can now sign in with your new password.
               </div>
-              <button className="fp-success-btn" onClick={() => router.push("/user-login")}>
+              <button
+                className="fp-success-btn"
+                onClick={() => router.push("/user-login")}
+              >
                 🔑 Go to Login
               </button>
-              <div className="fp-redirect-note">Redirecting automatically in 3 seconds…</div>
+              <div className="fp-redirect-note">
+                Redirecting automatically in 3 seconds…
+              </div>
             </div>
           ) : (
             <>
               {/* ── ROLE SELECTOR ── */}
               <div className="fp-role-label">Select Role</div>
               <div className="fp-role-grid">
-                {roles.map(r => (
+                {roles.map((r) => (
                   <button
                     key={r.value}
                     className={`fp-role-btn ${roleType === r.value ? "selected" : ""}`}
@@ -601,12 +627,15 @@ export default function ForgotPassword() {
                 <>
                   <div className="fp-otp-notice">
                     <div className="fp-pulse-dot" />
-                    OTP sent to <strong style={{ marginLeft: 3 }}>{email}</strong>
+                    OTP sent to{" "}
+                    <strong style={{ marginLeft: 3 }}>{email}</strong>
                   </div>
 
                   <div className="fp-field">
                     <div className="fp-field-header">
-                      <label className="fp-field-label">One-Time Password</label>
+                      <label className="fp-field-label">
+                        One-Time Password
+                      </label>
                     </div>
                     <input
                       type="text"
@@ -651,7 +680,13 @@ export default function ForgotPassword() {
                   disabled={loading || !email}
                   type="button"
                 >
-                  {loading ? <><div className="fp-spin" /> Sending OTP…</> : <>Send OTP →</>}
+                  {loading ? (
+                    <>
+                      <div className="fp-spin" /> Sending OTP…
+                    </>
+                  ) : (
+                    <>Send OTP →</>
+                  )}
                 </button>
               ) : (
                 <>
@@ -661,7 +696,13 @@ export default function ForgotPassword() {
                     disabled={loading || !otp || !newPassword}
                     type="button"
                   >
-                    {loading ? <><div className="fp-spin" /> Resetting…</> : <>Reset Password →</>}
+                    {loading ? (
+                      <>
+                        <div className="fp-spin" /> Resetting…
+                      </>
+                    ) : (
+                      <>Reset Password →</>
+                    )}
                   </button>
 
                   <button
@@ -670,9 +711,14 @@ export default function ForgotPassword() {
                     disabled={resendCooldown > 0 || loading}
                     type="button"
                   >
-                    {resendCooldown > 0 ? `Resend OTP (${resendCooldown}s)` : "🔄 Resend OTP"}
+                    {resendCooldown > 0
+                      ? `Resend OTP (${resendCooldown}s)`
+                      : "🔄 Resend OTP"}
                     {resendCooldown > 0 && (
-                      <div className="fp-resend-progress" style={{ width: progressWidth }} />
+                      <div
+                        className="fp-resend-progress"
+                        style={{ width: progressWidth }}
+                      />
                     )}
                   </button>
                 </>
@@ -681,14 +727,24 @@ export default function ForgotPassword() {
               {/* Message */}
               {message && (
                 <div className={`fp-msg ${messageType}`}>
-                  <span>{messageType === "error" ? "⚠️" : messageType === "success" ? "✅" : "ℹ️"}</span>
+                  <span>
+                    {messageType === "error"
+                      ? "⚠️"
+                      : messageType === "success"
+                        ? "✅"
+                        : "ℹ️"}
+                  </span>
                   {message}
                 </div>
               )}
 
               <div className="fp-divider" />
 
-              <button className="fp-back-link" onClick={() => router.push("/user-login")} type="button">
+              <button
+                className="fp-back-link"
+                onClick={() => router.push("/user-login")}
+                type="button"
+              >
                 ← Back to Login
               </button>
             </>

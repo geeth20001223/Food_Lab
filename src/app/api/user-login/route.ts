@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
-
   try {
     const body = await req.json();
     const { action } = body;
@@ -32,8 +31,12 @@ export async function POST(req: Request) {
 
       if (rows.length === 0) {
         return NextResponse.json(
-          { success: false, message: roleType === "Admin" ? "Admin not found" : "User not found" },
-          { status: 401 }
+          {
+            success: false,
+            message:
+              roleType === "Admin" ? "Admin not found" : "User not found",
+          },
+          { status: 401 },
         );
       }
 
@@ -43,15 +46,16 @@ export async function POST(req: Request) {
       if (!isMatch) {
         return NextResponse.json(
           { success: false, message: "Incorrect password" },
-          { status: 401 }
+          { status: 401 },
         );
       }
 
       return NextResponse.json({
         success: true,
-        user: roleType === "Admin"
-          ? { id: user.id, username: user.username, role: "Admin" }
-          : { id: user.id, employee_id: user.employee_id, role: user.role },
+        user:
+          roleType === "Admin"
+            ? { id: user.id, username: user.username, role: "Admin" }
+            : { id: user.id, employee_id: user.employee_id, role: user.role },
       });
     }
 
@@ -64,13 +68,13 @@ export async function POST(req: Request) {
 
       const [rows] = await db.execute<any[]>(
         `SELECT * FROM ${table} WHERE email = ?`,
-        [email]
+        [email],
       );
 
       if (rows.length === 0) {
         return NextResponse.json(
           { success: false, message: "Email not found" },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
@@ -83,7 +87,7 @@ export async function POST(req: Request) {
 
       await db.execute(
         `UPDATE ${table} SET otp = ?, otp_expiry = ? WHERE email = ?`,
-        [otp, expiry, email]
+        [otp, expiry, email],
       );
 
       // Send OTP via Gmail
@@ -91,8 +95,8 @@ export async function POST(req: Request) {
         const transporter = nodemailer.createTransport({
           service: "gmail",
           auth: {
-            user: "yourgmail@gmail.com",       // ✅ Replace with your Gmail
-            pass: "your-app-password",         // ✅ Replace with Gmail App Password
+            user: "yourgmail@gmail.com", // ✅ Replace with your Gmail
+            pass: "your-app-password", // ✅ Replace with Gmail App Password
           },
         });
 
@@ -105,10 +109,16 @@ export async function POST(req: Request) {
 
         console.log(`OTP email sent to ${email}: ${info.response}`);
       } catch (emailError: any) {
-        console.error("Gmail sending error:", emailError.response || emailError.message || emailError);
+        console.error(
+          "Gmail sending error:",
+          emailError.response || emailError.message || emailError,
+        );
         return NextResponse.json(
-          { success: false, message: `Failed to send OTP: ${emailError.message}` },
-          { status: 500 }
+          {
+            success: false,
+            message: `Failed to send OTP: ${emailError.message}`,
+          },
+          { status: 500 },
         );
       }
 
@@ -127,22 +137,26 @@ export async function POST(req: Request) {
 
       const [rows] = await db.execute<any[]>(
         `SELECT * FROM ${table} WHERE email = ?`,
-        [email]
+        [email],
       );
 
       if (rows.length === 0) {
         return NextResponse.json(
           { success: false, message: "User not found" },
-          { status: 404 }
+          { status: 404 },
         );
       }
 
       const user = rows[0];
 
-      if (!user.otp || user.otp !== otp || new Date(user.otp_expiry) < new Date()) {
+      if (
+        !user.otp ||
+        user.otp !== otp ||
+        new Date(user.otp_expiry) < new Date()
+      ) {
         return NextResponse.json(
           { success: false, message: "Invalid or expired OTP" },
-          { status: 400 }
+          { status: 400 },
         );
       }
 
@@ -152,7 +166,7 @@ export async function POST(req: Request) {
         `UPDATE ${table} 
          SET password = ?, otp = NULL, otp_expiry = NULL 
          WHERE email = ?`,
-        [hashedPassword, email]
+        [hashedPassword, email],
       );
 
       return NextResponse.json({
@@ -166,14 +180,13 @@ export async function POST(req: Request) {
     // ===========================
     return NextResponse.json(
       { success: false, message: "Invalid action" },
-      { status: 400 }
+      { status: 400 },
     );
-
   } catch (error) {
     console.error("Server Error:", error);
     return NextResponse.json(
       { success: false, message: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
