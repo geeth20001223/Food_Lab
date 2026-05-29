@@ -1,0 +1,2 @@
+app name = food_lab_nw
+psswrd = wedk rhuf bsuu zfra

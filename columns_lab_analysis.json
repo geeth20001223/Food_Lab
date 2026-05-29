@@ -1,0 +1,250 @@
+[
+  {
+    "Field": "id",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+  },
+  {
+    "Field": "food_register_id",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "UNI",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "sample_type",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "moist_m1_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "moist_m2_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "moist_m3_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "moist_m1_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "moist_m2_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "moist_m3_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "microscope_notes",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "ash_m1_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "ash_m2_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "ash_m3_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "ash_m1_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "ash_m2_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "ash_m3_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "acid_m1_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "acid_m2_i",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "acid_m1_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "acid_m2_ii",
+    "Type": "decimal(10,4)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "analyzed_by",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "analyzed_date",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "checked_by",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "checked_date",
+    "Type": "date",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "created_at",
+    "Type": "datetime",
+    "Null": "YES",
+    "Key": "",
+    "Default": "current_timestamp()",
+    "Extra": ""
+  },
+  {
+    "Field": "updated_at",
+    "Type": "datetime",
+    "Null": "YES",
+    "Key": "",
+    "Default": "current_timestamp()",
+    "Extra": ""
+  },
+  {
+    "Field": "revision_no",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "03",
+    "Extra": ""
+  },
+  {
+    "Field": "issue_no",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "01",
+    "Extra": ""
+  },
+  {
+    "Field": "date_of_revision",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "01/01/2024",
+    "Extra": ""
+  },
+  {
+    "Field": "date_of_issue",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "23/01/2019",
+    "Extra": ""
+  },
+  {
+    "Field": "analysis_complete",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+  }
+]

@@ -1,27 +1,82 @@
 {
-  "name": "food_lab_system",
-  "version": "0.1.0",
+  "name": "food-lab-system",
+  "version": "1.0.0",
   "private": true,
+  "main": "main.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && xcopy /E /I /Y .next\\standalone . && xcopy /E /I /Y .next\\static .next\\standalone\\.next\\static",
     "start": "next start",
+    "electron:dev": "electron .",
+    "dist": "npm run build && electron-builder --win --x64",
+    "db:setup": "node setup_db.js",
     "lint": "biome check",
     "format": "biome format --write"
   },
+  "build": {
+    "appId": "com.foodlab.system",
+    "productName": "Food Lab System",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "server.js",
+      "db.js",
+      "check_db.js",
+      "setup_db.js",
+      ".next/**/*",
+      "public/**/*",
+      "node_modules/**/*",
+      ".env",
+      "package.json"
+    ],
+    "asar": false,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "public/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Food Lab System"
+    }
+  },
   "dependencies": {
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.16.2",
+    "next": "^15.1.6",
+    "nodemailer": "^8.0.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.0",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "babel-plugin-react-compiler": "1.0.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@biomejs/biome": "1.9.4",
+    "@types/jsonwebtoken": "^9.0.8",
+    "@types/node": "^20.17.19",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "autoprefixer": "^10.4.20",
+    "electron": "^41.7.0",
+    "electron-builder": "^26.8.1",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  },
+  "overrides": {
+    "postcss": "$postcss"
   }
 }

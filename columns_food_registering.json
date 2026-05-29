@@ -1,0 +1,130 @@
+[
+  {
+    "Field": "id",
+    "Type": "int(11)",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+  },
+  {
+    "Field": "sample_date",
+    "Type": "date",
+    "Null": "NO",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "collection_time",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "sample_number",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "UNI",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "reference_number",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "sample_type",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "phi_area",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "moh_area",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "analysis_details",
+    "Type": "text",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "handed_over_by",
+    "Type": "varchar(100)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+  },
+  {
+    "Field": "created_at",
+    "Type": "timestamp",
+    "Null": "NO",
+    "Key": "",
+    "Default": "current_timestamp()",
+    "Extra": ""
+  },
+  {
+    "Field": "updated_at",
+    "Type": "timestamp",
+    "Null": "NO",
+    "Key": "",
+    "Default": "current_timestamp()",
+    "Extra": "on update current_timestamp()"
+  },
+  {
+    "Field": "revision_no",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "03",
+    "Extra": ""
+  },
+  {
+    "Field": "issue_no",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "01",
+    "Extra": ""
+  },
+  {
+    "Field": "date_of_revision",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "01/01/2024",
+    "Extra": ""
+  },
+  {
+    "Field": "date_of_issue",
+    "Type": "varchar(50)",
+    "Null": "YES",
+    "Key": "",
+    "Default": "23/01/2019",
+    "Extra": ""
+  }
+]
