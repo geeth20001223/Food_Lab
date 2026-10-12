@@ -330,7 +330,7 @@ export default function Login() {
             marginTop: "1.5rem",
           }}
         >
-          © 2024 Provincial Food Laboratory (NWP)
+          © 2026 Provincial Food Laboratory (NWP)
         </p>
       </div>
 
